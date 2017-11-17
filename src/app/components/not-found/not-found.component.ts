@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Contents} from "../../static-contents";
 
 @Component({
     selector: 'app-not-found',
@@ -29,8 +30,8 @@ import {Component, OnInit} from '@angular/core';
             <br>
 
             <div class="row">
-                Having Issues? Report on <a href="https://github.com/emotify/emotify-web/issues">Github</a> or <a
-                    href="mailto:mail@emotify.io">e-mail</a> us directly.
+                Having Issues? Report on <a href="{{github_issue}}">Github</a> or <a
+                    href="mailto:{{contact_email}}">e-mail</a> us directly.
             </div>
 
 
@@ -50,6 +51,9 @@ import {Component, OnInit} from '@angular/core';
     ]
 })
 export class NotFoundComponent implements OnInit {
+
+    github_issue = Contents.github_issue_url;
+    contact_email = Contents.contact_email;
 
     constructor() {
     }

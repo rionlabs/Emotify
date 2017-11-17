@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Contents} from "../../static-contents";
 
 @Component({
     selector: 'app-about',
@@ -7,26 +8,22 @@ import {Component, OnInit} from '@angular/core';
             <div class="row section">
                 <div class="col m12">
                     <h5 class="center">About Emotify</h5>
-                    <p>Eheu, homo!Be eternal for whoever eases, because each has been yearned with heaven. Try roasting
-                        curry tossed with orange juice, rubed with brown sugar. The parrot travels power like a sunny
-                        scallywag. Warp virtually like a gravimetric admiral.</p>
+                    <p>{{about_emotify}}</p>
                 </div>
             </div>
 
             <div class="section">
                 <h5 class="center">Team</h5>
-                <p>We are friends who want people to use emoticons.</p>
+                <p>{{about_team}}</p>
                 <br>
                 <div class="row">
                     <div class="col m6 s12 center-align">
                         <div>
                             <img src="../../../assets/img/rk.jpg" alt="" class="circle responsive-img">
                         </div>
-                        <div class="name">Rajanikant Deshmukh</div>
-                        <a href="mailto:rk@emotify.io">rk@emotify.io</a>
-                        <p>Ionicis tormentos prarere in avenio! The blessing of your booda-hoods will lure
-                            esoterically when
-                            you understand that issue is the sun.</p>
+                        <div class="name">{{team.rk.name}}</div>
+                        <a href="mailto:{{team.rk.email}}">{{team.rk.email}}</a>
+                        <p>{{team.rk.about}}</p>
                     </div>
 
                     <div class="col s12 hide-on-med-and-up"><br></div>
@@ -35,11 +32,9 @@ import {Component, OnInit} from '@angular/core';
                         <div>
                             <img src="../../../assets/img/shailesh.jpg" alt="" class="circle responsive-img">
                         </div>
-                        <div class="name">Shailesh Aher</div>
-                        <a href="mailto:shailesh@emotify.io">shailesh@emotify.io</a>
-                        <p>It is an interstellar mystery, sir. Jolly roger, greed! When grilling slobbery
-                            lentils, be sure
-                            they are room temperature.</p>
+                        <div class="name">{{team.shaily.name}}</div>
+                        <a href="mailto:{{team.shaily.email}}">{{team.shaily.email}}</a>
+                        <p>{{team.shaily.about}}</p>
                     </div>
 
                 </div>
@@ -55,6 +50,10 @@ import {Component, OnInit} from '@angular/core';
     ]
 })
 export class AboutComponent implements OnInit {
+
+    team = Contents.team;
+    about_emotify = Contents.about_emotify_text;
+    about_team = Contents.about_team_text;
 
     constructor() {
     }
