@@ -81,15 +81,13 @@ lib-cov
 
 # node-waf configuration
 .lock-wscript
+package-lock.json
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
 jspm_packages/
-
-# Typescript v1 declaration files
-typings/
 
 # dotenv environment variables file
 .env
