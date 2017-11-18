@@ -81,7 +81,6 @@ lib-cov
 
 # node-waf configuration
 .lock-wscript
-package-lock.json
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
@@ -94,3 +93,6 @@ jspm_packages/
 
 ### Sass template
 .sass-cache/
+
+## Firebase
+/.firebaserc
