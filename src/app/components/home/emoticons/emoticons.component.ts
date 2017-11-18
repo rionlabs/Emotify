@@ -1,143 +1,159 @@
 import {Component, OnInit} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-emoticons',
     template: `
         <!-- Main Contents -->
-        <div class="container">
+        <div class="row">
 
-            <div class="section">
-
-                <!--   Emoticon Section   -->
-                <ul class="tabs">
-                    <li class="tab col s3"><a class="active" href="#section-excited">Excited</a></li>
-                    <li class="tab col s3"><a href="#section-happy">Happy</a></li>
-                    <li class="tab col s3"><a href="#section-love">Love</a></li>
-                    <li class="tab col s3"><a href="#section-meh">Meh</a></li>
-                    <li class="tab col s3"><a href="#section-surprised">Surprised</a></li>
-                    <li class="tab col s3"><a href="#section-angry">Angry</a></li>
-                    <li class="tab col s3"><a href="#section-sad">Sad</a></li>
-                </ul>
-
-                <!-- -->
-                <div id="section-excited" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">o(^▽^)o</a>
-                        <a class="collection-item">o(^◇^)o</a>
-                        <a class="collection-item">(/^▽^)/</a>
-                        <a class="collection-item">ヽ(;^o^ヽ)</a>
-                        <a class="collection-item">ヽ(*⌒∇⌒*)ﾉ</a>
-                        <a class="collection-item">╰( ･ ᗜ ･ )╯</a>
-                        <a class="collection-item">ヾ(o✪‿✪o)ｼ</a>
-                        <a class="collection-item">٩(^ᴗ^)۶</a>
-                        <a class="collection-item">ヽ(´ω｀○)ﾉ.+ﾟ*｡:ﾟ+</a>
-                        <a class="collection-item">٩(θ‿θ)۶</a>
+            <div class="col m5">
+                <!-- Tags Section -->
+                <div class="section center-align" id="tag-container">
+                    <div class="chip chip-active" (click)="loadPopularEmoticons()">
+                        Popular
                     </div>
-                </div>
-
-                <!-- -->
-                <div id="section-happy" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">∠( ᐛ 」∠)＿</a>
-                        <a class="collection-item">ᕕ( ᐛ )ᕗ</a>
-                        <a class="collection-item">( ´ ▽ \` )ﾉ</a>
-                        <a class="collection-item">~ヾ(＾∇＾)</a>
-                        <a class="collection-item">(ノ・∀・)ノ</a>
-                        <a class="collection-item">(*´・ｖ・)</a>
-                        <a class="collection-item">（ｖ＾＿＾）ｖ</a>
-                        <a class="collection-item">˚✧₊⁎( ˘ω˘ )⁎⁺˳✧༚</a>
-                        <a class="collection-item">(＊◕ᴗ◕＊)</a>
-                        <a class="collection-item">(　◠ ◡ ◠　)</a>
-                    </div>
-                </div>
-
-                <!-- -->
-                <div id="section-love" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">(｡♥‿♥｡)</a>
-                        <a class="collection-item">໒( ♥ ◡ ♥ )७</a>
-                        <a class="collection-item">（´・｀ ）♡</a>
-                        <a class="collection-item">（●´∀｀）ノ♡</a>
-                        <a class="collection-item">(◍•ᴗ•◍)❤</a>
-                        <a class="collection-item">( ⌯◞◟⌯)♡</a>
-                        <a class="collection-item">╰(✿´⌣\`✿)╯♡</a>
-                        <a class="collection-item">（。ˇ ⊖ˇ）♡</a>
-                        <a class="collection-item">(ˆˇˆ)-c<˘ˑ˘)</a>
-                        <a class="collection-item">(◍•ᴗ•◍)♡ ✧*。</a>
-                    </div>
-                </div>
-
-                <!-- -->
-                <div id="section-meh" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">¯\\_(ツ)_/¯</a>
-                        <a class="collection-item">¯\\_(⊙_ʖ⊙)_/¯</a>
-                        <a class="collection-item">＼（〇_ｏ）／</a>
-                        <a class="collection-item">┐(￣ー￣)┌</a>
-                        <a class="collection-item">└(・-・)┘</a>
-                        <a class="collection-item">╮(─▽─)╭</a>
-                        <a class="collection-item">╰| ⊡ _ ⊡ |╯</a>
-                        <a class="collection-item">ヽ(´ー\`)ﾉ</a>
-                        <a class="collection-item">ʅ(｡◔‸◔｡)ʃ</a>
-                        <a class="collection-item">┻━┻ ︵ ¯\\ (ツ)/¯ ︵ ┻━┻</a>
-                    </div>
-                </div>
-
-                <!-- -->
-                <div id="section-surprised" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">（・□・；）</a>
-                        <a class="collection-item">（＊〇□〇）……！</a>
-                        <a class="collection-item">(・о・)</a>
-                        <a class="collection-item">＼(>o<)ノ</a>
-                        <a class="collection-item">(ﾉﾟ0ﾟ)ﾉ~</a>
-                        <a class="collection-item">(´⊙ω⊙\`)！</a>
-                        <a class="collection-item">(´⊙ω⊙\`)ᵒᵐᵍᵎᵎᵎ</a>
-                        <a class="collection-item">(ᵒ̤̑ ₀̑ ᵒ̤̑)wow!*✰</a>
-                        <a class="collection-item">(´･艸･｀)</a>
-                        <a class="collection-item">((((；゜Д゜)))</a>
-                    </div>
-                </div>
-
-                <div id="section-angry" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">(；￣Д￣）</a>
-                        <a class="collection-item">(*￣m￣)</a>
-                        <a class="collection-item">＼(｀0´)／</a>
-                        <a class="collection-item">o(｀□´)○</a>
-                        <a class="collection-item">ヾ( ･\`⌓´･)ﾉﾞ</a>
-                        <a class="collection-item">ᕙ(⇀‸↼‶)ᕗ</a>
-                        <a class="collection-item">(＃｀д´)ﾉ</a>
-                        <a class="collection-item">(╯°□°）╯︵ ┻━┻</a>
-                        <a class="collection-item">ヽ(#ﾟДﾟ)ﾉ┌┛Σ(ノ´Д\`)ノ</a>
-                        <a class="collection-item">凸(｀0´)凸</a>
-                    </div>
-                </div>
-
-                <!-- -->
-                <div id="section-sad" class="col s12 section">
-                    <div class="collection">
-                        <a class="collection-item">(▰˘︹˘▰)</a>
-                        <a class="collection-item">（（●´∧｀●））</a>
-                        <a class="collection-item">(っ˘̩╭╮˘̩)っ</a>
-                        <a class="collection-item">(个_个)</a>
-                        <a class="collection-item">( ɵ̥̥ ˑ̫ ɵ̥̥)</a>
-                        <a class="collection-item">｡゜(｀Д´)゜｡</a>
-                        <a class="collection-item">ヽ(´□｀。)ﾉ</a>
-                        <a class="collection-item">(ノ﹏ヽ)</a>
-                        <a class="collection-item">｡･ﾟﾟ･o（ｉДｉ）o･ﾟﾟ･｡</a>
-                        <a class="collection-item">.・゜゜・（／。＼）・゜゜・．</a>
-                    </div>
+                    <div *ngFor="let item of items | async" class="chip" (click)="loadTaggedEmoticon(item)">{{item.key | titlecase}}</div>
                 </div>
             </div>
-            <br><br>
+
+            <div class="col m7">
+
+                <!-- Emoticons Section -->
+                <div class="section center-align">
+                    <div *ngFor="let e of emoticonList | async" id="{{e.hash}}" class="big-chip" (click)="copyToClipBoard($event, e)">{{e.emoticon}}</div>
+                </div>
+            </div>
         </div>
+
+        <textarea id="temp-area" style="position: fixed; width: 2em; height: 2em; border: none; outline: none; box-shadow: none; background: transparent;"></textarea>
+
+        <!-- Search Section -->
+        <div class="section center-align">
+
+        </div>
+
+
+
+
     `,
-    styles: []
+    styles: [
+            `
+            .big-chip {
+                display: inline-block;
+                height: 48px;
+                font-size: 14px;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.9);
+                line-height: 48px;
+                padding: 0 16px;
+                border-radius: 24px;
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                margin-bottom: 10px;
+                margin-right: 10px;
+            }
+
+            .big-chip:hover {
+                //font-weight: 400;
+                cursor: pointer;
+                color: rgba(0, 0, 0, 0.95);
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                background-color: #DDD;
+            }
+
+            .chip {
+                display: inline-block;
+                height: 24px;
+                font-size: 12px;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.70);
+                line-height: 24px;
+                padding: 0 8px;
+                border-radius: 12px;
+                background-color: #e4e4e4;
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+
+            .chip:hover {
+                cursor: pointer;
+                color: rgba(0, 0, 0, 0.85);
+                background-color: #c3c3c3;
+            }
+
+            .chip-active {
+                cursor: pointer;
+                color: rgba(0, 0, 0, 0.80);
+                background-color: #bababa;
+            }
+        `
+    ]
 })
 export class EmoticonsComponent implements OnInit {
 
-    constructor() {
+    items: Observable<any[]>;
+    emoticonList: Observable<any[]>;
+
+    activeTag = "Popular";
+
+    constructor(private db: AngularFireDatabase) {
+        const listRef = db.list('metadata/tagCount', ref => ref.orderByKey());
+        this.items = listRef.snapshotChanges();
+        this.loadPopularEmoticons();
+    }
+
+    loadTaggedEmoticon(item): void {
+        let emoticonTag = item.key;
+        this.activeTag = emoticonTag;
+        const listRef = this.db.list('emoticons', ref => ref.orderByChild('tags/' + emoticonTag).equalTo(true));
+        this.emoticonList = listRef.valueChanges();
+
+        // Set Active Tag
+        let tagContainer = $('#tag-container');
+        tagContainer.children('.chip-active').removeClass('chip-active');
+        tagContainer.children().filter(function () {
+            return $(this).text().toLowerCase() === emoticonTag;
+        }).addClass('chip-active');
+    }
+
+    loadPopularEmoticons() {
+        const popularEmoticonRef = this.db.list('emoticons', ref => ref.orderByChild('useCounter').limitToLast(50));
+        this.emoticonList = popularEmoticonRef.valueChanges();
+    }
+
+    copyToClipBoard($event, emoticon) {
+        // Copy text to clipboard
+        let emoticonText = $event.target.innerHTML;
+
+        let textArea = $('#temp-area');
+        textArea.text(emoticonText);
+        textArea.select();
+        try {
+            let successful = document.execCommand('copy');
+            if (!successful)
+                console.log("Could not copy");
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+
+        // Show on element
+        let emoticonTarget = $('div#' + emoticon.hash);
+        console.log('div#' + emoticon.hash);
+        console.log(emoticonTarget);
+        emoticonTarget.html("Copied!");
+        emoticonTarget.fadeTo(600, 0, function () {
+            $(this).delay(500);
+            $(this).html(emoticonText);
+            $(this).fadeTo(600, 1);
+        });
+
+        // Counter in db
+        let newCounter = emoticon.useCounter + 1;
+        let path = 'emoticons/' + emoticon.hash + '/useCounter';
+        this.db.object(path).set(newCounter)
+            .catch(err => console.log(err, 'Error!'));
     }
 
     ngOnInit() {

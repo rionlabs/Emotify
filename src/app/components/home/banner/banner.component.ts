@@ -6,12 +6,10 @@ import {Contents} from "../../../static-contents";
     template: `
         <div class="section no-pad-bot" id="index-banner">
             <div class="container">
-                <br>
-                <h3 class="header center orange-text">{{banner_title}}</h3>
+                <h4 class="header center orange-text">{{banner_title}}</h4>
                 <div class="row center">
                     <h5 class="header col s12 light">{{banner_text}}</h5>
                 </div>
-                <br>
             </div>
         </div>
     `,
