@@ -1,0 +1,11 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+$app-primary: mat-palette($mat-deep-orange);
+$app-accent: mat-palette($mat-indigo, A200, A100, A400);
+
+// Sass map containing all of the palettes
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@include angular-material-theme($app-theme);
