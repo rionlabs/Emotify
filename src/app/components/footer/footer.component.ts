@@ -11,7 +11,8 @@ import {Component, OnInit} from '@angular/core';
                         <h5 class="white-text">Around Web</h5>
                         <p class="white-text">Emotify is free and open sourced source, the code is available on GitHub!
                             Also our Android and iOS apps are coming soon on Play Store!</p>
-                        <a href="https://github.com/emotify" class="btn white deep-orange-text ">View on GitHub</a>
+                        <a href="https://github.com/rionlabs/emotify-web-app" class="btn white deep-orange-text ">View
+                            on GitHub</a>
                     </div>
 
                     <div class="col m2 s12 center-align">
@@ -33,7 +34,7 @@ import {Component, OnInit} from '@angular/core';
             </div>
             <div class="footer-copyright">
                 <div class="container center-align">
-                    Copyright @2017 Emotify
+                    <span id="rionlabs">rionlabs</span>　&　ヽ(♡‿♡)ノ
                 </div>
             </div>
         </footer>
@@ -57,6 +58,10 @@ import {Component, OnInit} from '@angular/core';
 
             #email-input {
 
+            }
+
+            #rionlabs {
+                font-family: 'Orbitron', sans-serif;
             }
         `
     ]
