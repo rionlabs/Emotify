@@ -2,10 +2,35 @@
 .icon-block {
     padding: 0 15px;
 }
+
 .icon-block .material-icons {
     font-size: inherit;
 }
 
 .container {
     width: 80%;
+}
+
+body {
+    position: relative;
+    padding-bottom: 2em;
+    height: 100%;
+    min-height: 100vh;
+}
+
+footer {
+    position: absolute;
+    font-size: 12px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+footer > .mat-toolbar {
+    background: #FFF;
+    font-size: 14px;
+}
+
+#rionlabs-logo {
+    font-family: 'Orbitron', sans-serif;
 }
