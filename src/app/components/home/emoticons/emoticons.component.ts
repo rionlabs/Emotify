@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from "rxjs";
 import * as $ from 'jquery';
 
 @Component({
@@ -15,7 +15,8 @@ import * as $ from 'jquery';
                     <div class="chip chip-active" (click)="loadPopularEmoticons()">
                         Popular
                     </div>
-                    <div *ngFor="let item of items | async" class="chip" (click)="loadTaggedEmoticon(item)">{{item.key | titlecase}}</div>
+                    <div *ngFor="let item of items | async" class="chip"
+                         (click)="loadTaggedEmoticon(item)">{{item.key | titlecase}}</div>
                 </div>
             </div>
 
@@ -23,12 +24,14 @@ import * as $ from 'jquery';
 
                 <!-- Emoticons Section -->
                 <div class="section center-align">
-                    <div *ngFor="let e of emoticonList | async" id="{{e.hash}}" class="big-chip" (click)="copyToClipBoard($event, e)">{{e.emoticon}}</div>
+                    <div *ngFor="let e of emoticonList | async" id="{{e.hash}}" class="big-chip"
+                         (click)="copyToClipBoard($event, e)">{{e.emoticon}}</div>
                 </div>
             </div>
         </div>
 
-        <textarea id="temp-area" style="position: fixed; width: 2em; height: 2em; border: none; outline: none; box-shadow: none; background: transparent;"></textarea>
+        <textarea id="temp-area"
+                  style="position: fixed; width: 2em; height: 2em; border: none; outline: none; box-shadow: none; background: transparent;"></textarea>
 
         <!-- Search Section -->
         <div class="section center-align">
@@ -56,7 +59,7 @@ import * as $ from 'jquery';
             }
 
             .big-chip:hover {
-                //font-weight: 400;
+            / / font-weight: 400;
                 cursor: pointer;
                 color: rgba(0, 0, 0, 0.95);
                 border: 1px solid rgba(0, 0, 0, 0.2);
