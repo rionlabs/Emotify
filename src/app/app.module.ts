@@ -10,13 +10,11 @@ import {BannerComponent} from './components/home/banner/banner.component';
 import {HomeComponent} from './components/home/home.component';
 import {EmoticonsComponent} from './components/home/emoticons/emoticons.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
-import {AboutComponent} from './components/about/about.component';
 
 import {AngularFireModule} from "angularfire2";
 
 import {FirebaseConfigObj} from "../environments/firebase";
 import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/database";
-import {ContentsService} from "./services/contents.service";
 
 
 @NgModule({
@@ -27,8 +25,7 @@ import {ContentsService} from "./services/contents.service";
         BannerComponent,
         HomeComponent,
         EmoticonsComponent,
-        NotFoundComponent,
-        AboutComponent
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
@@ -37,8 +34,7 @@ import {ContentsService} from "./services/contents.service";
     ],
     providers: [
         AngularFireDatabase,
-        AngularFireDatabaseModule,
-        ContentsService
+        AngularFireDatabaseModule
     ],
     bootstrap: [AppComponent]
 })

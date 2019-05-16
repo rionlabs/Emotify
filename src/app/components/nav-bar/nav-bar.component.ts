@@ -9,7 +9,6 @@ import {Component, OnInit} from '@angular/core';
                 <a id="logo-container" class="brand-logo" routerLink="/">Emotify</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a routerLink="/">Home</a></li>
-                    <li><a routerLink="/about">About</a></li>
                 </ul>
 
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
