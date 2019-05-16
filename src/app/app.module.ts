@@ -11,10 +11,11 @@ import {HomeComponent} from './components/home/home.component';
 import {EmoticonsComponent} from './components/home/emoticons/emoticons.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 
-import {AngularFireModule} from "angularfire2";
-
 import {FirebaseConfigObj} from "../environments/firebase";
+import {AngularFireModule} from "angularfire2";
 import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/database";
+
+import {MatToolbarModule} from "@angular/material";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/datab
     imports: [
         BrowserModule,
         AppRoutingModule,
-        AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify')
+        AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify'),
+        MatToolbarModule
     ],
     providers: [
         AngularFireDatabase,
