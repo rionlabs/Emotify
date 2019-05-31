@@ -14,7 +14,7 @@ import {FirebaseConfigObj} from "../environments/firebase";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/database";
 
-import {MatButtonModule, MatSnackBarModule, MatToolbarModule} from "@angular/material";
+import {MatButtonModule, MatInputModule, MatSnackBarModule, MatToolbarModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
@@ -34,7 +34,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         MatToolbarModule,
         MatButtonModule,
         MatSnackBarModule,
-        AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify')
+        AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify'),
+        MatInputModule
     ],
     providers: [
         AngularFireDatabase,
