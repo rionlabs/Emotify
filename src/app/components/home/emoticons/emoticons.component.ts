@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material";
 import * as $ from 'jquery';
 import {EmoticonsService} from "../../../service/emoticons.service";
+import {MiniEmoticon} from "../../../models/MiniEmoticon";
 
 @Component({
     selector: 'app-emoticons',
@@ -13,24 +13,24 @@ import {EmoticonsService} from "../../../service/emoticons.service";
 export class EmoticonsComponent implements OnInit {
 
     items: Observable<any[]>;
-    emoticonList: Observable<any[]>;
+    emoticonList: Observable<MiniEmoticon[]>;
 
     activeTag: string;
 
-    constructor(private db: AngularFireDatabase, private staticEmoticonsService: EmoticonsService, private snackBar: MatSnackBar) {
-        const listRef = db.list('metadata/tagCount', ref => ref.orderByKey());
-        this.items = listRef.snapshotChanges();
+    constructor(
+        private emoticonsService: EmoticonsService,
+        private snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
-        this.emoticonList = this.staticEmoticonsService.getStaticEmoticons();
+        this.items = this.emoticonsService.getTags();
+        this.emoticonList = this.emoticonsService.getStaticEmoticons();
     }
 
     loadTaggedEmoticon(item): void {
         let emoticonTag = item.key;
         this.activeTag = emoticonTag;
-        const listRef = this.db.list('emoticons', ref => ref.orderByChild('tags/' + emoticonTag).equalTo(true));
-        this.emoticonList = listRef.valueChanges();
+        this.emoticonList = this.emoticonsService.getTaggedEmoticons(this.activeTag);
 
         // Set Active Tag
         let tagContainer = $('#tag-container');
@@ -41,8 +41,7 @@ export class EmoticonsComponent implements OnInit {
     }
 
     loadPopularEmoticons() {
-        const popularEmoticonRef = this.db.list('emoticons', ref => ref.orderByChild('useCounter').limitToLast(50));
-        this.emoticonList = popularEmoticonRef.valueChanges();
+        this.emoticonList = this.emoticonsService.getPopularEmoticons();
     }
 
     onEmoticonClick($event, emoticon) {
@@ -79,9 +78,6 @@ export class EmoticonsComponent implements OnInit {
      * @param emoticon
      */
     updateDb(emoticon) {
-        let newCounter = emoticon.useCounter + 1;
-        let path = 'emoticons/' + emoticon.hash + '/useCounter';
-        this.db.object(path).set(newCounter)
-            .catch(err => console.log(err, 'Error!'));
+        this.emoticonsService.increaseUserCounter(emoticon)
     }
 }
