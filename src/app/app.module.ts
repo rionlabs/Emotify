@@ -16,6 +16,8 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/datab
 
 import {MatButtonModule, MatInputModule, MatSnackBarModule, MatToolbarModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {EmoticonsService} from "./service/emoticons.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -34,12 +36,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         MatToolbarModule,
         MatButtonModule,
         MatSnackBarModule,
-        AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify'),
-        MatInputModule
+        MatInputModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify')
     ],
     providers: [
         AngularFireDatabase,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        EmoticonsService
     ],
     bootstrap: [AppComponent]
 })

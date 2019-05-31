@@ -1,7 +1,7 @@
-export interface Emoticon {
+import {MiniEmoticon} from "./MiniEmoticon";
+
+export interface Emoticon extends MiniEmoticon{
     hash: string;
-    emoticon: string;
     rank: number;
-    tags: any;
     useCounter: number;
 }

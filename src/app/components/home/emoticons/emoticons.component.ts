@@ -3,6 +3,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material";
 import * as $ from 'jquery';
+import {EmoticonsService} from "../../../service/emoticons.service";
 
 @Component({
     selector: 'app-emoticons',
@@ -14,15 +15,15 @@ export class EmoticonsComponent implements OnInit {
     items: Observable<any[]>;
     emoticonList: Observable<any[]>;
 
-    activeTag = "Popular";
+    activeTag: string;
 
-    constructor(private db: AngularFireDatabase, private snackBar: MatSnackBar) {
+    constructor(private db: AngularFireDatabase, private staticEmoticonsService: EmoticonsService, private snackBar: MatSnackBar) {
         const listRef = db.list('metadata/tagCount', ref => ref.orderByKey());
         this.items = listRef.snapshotChanges();
-        this.loadPopularEmoticons();
     }
 
     ngOnInit() {
+        this.emoticonList = this.staticEmoticonsService.getStaticEmoticons();
     }
 
     loadTaggedEmoticon(item): void {
