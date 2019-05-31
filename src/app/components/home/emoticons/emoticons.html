@@ -1,5 +1,6 @@
 <!-- Emoticons Section -->
-<div class="row">
+
+<div class="section">
     <div class="section center-align">
         <div *ngFor="let e of emoticonList | async" id="{{e.hash}}" class="big-chip"
              (click)="onEmoticonClick($event, e)">{{e.emoticon}}</div>
@@ -8,7 +9,7 @@
 
 <!-- Tags Section -->
 <div class="section center-align">
-    <h5 class="center">All Emoticons</h5>
+    <h5 id="all-emoticons-title" class="center">all emoticons</h5>
     <div class="row">
         <div class="section center-align" id="tag-container">
             <div class="chip chip-active" (click)="loadPopularEmoticons()">
