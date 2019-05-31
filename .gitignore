@@ -96,3 +96,4 @@ jspm_packages/
 
 ## Firebase
 /.firebaserc
+*debug.log
