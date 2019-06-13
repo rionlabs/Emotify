@@ -46,6 +46,6 @@ workflows:
   build_source:
     jobs:
       - build
-      - deploy:
+      - deploy-firebase:
           requires:
             - build
