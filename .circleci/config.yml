@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8-browsers
+    parallelism: 4
     steps:
       - checkout
       - restore_cache:
@@ -16,7 +17,7 @@ jobs:
           command: echo $FIREBASE_TS > src/environments/firebase.ts
       - run:
           name: Build
-          command: npm run ng build --prod
+          command: npm run ng build --prod=true --progress=false
       - save_cache:
           key: EmotifyCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
@@ -37,13 +38,17 @@ jobs:
           name: Install dependencies
           command: npm install
       - run:
+          name: Install functions dependencies
+          command: cd functions && npm install && cd ..
+      - run: npm run firebase help
+      - run:
           name: Deploy Master to Firebase
-          command: firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"
+          command: npm run firebase deploy --token="$FIREBASE_TOKEN"
 
 
 workflows:
   version: 2
-  build_source:
+  build_deploy:
     jobs:
       - build
       - deploy-firebase:
