@@ -24,13 +24,14 @@ export class EmoticonsComponent implements OnInit {
 
     ngOnInit() {
         this.items = this.emoticonsService.getTags();
-        this.emoticonList = this.emoticonsService.getStaticEmoticons();
+        this.emoticonList = this.emoticonsService.getEmoticons();
     }
 
     loadTaggedEmoticon(item): void {
         let emoticonTag = item.key;
         this.activeTag = emoticonTag;
-        this.emoticonList = this.emoticonsService.getTaggedEmoticons(this.activeTag);
+
+        this.emoticonsService.setActiveTag(this.activeTag);
 
         // Set Active Tag
         let tagContainer = $('#tag-container');
@@ -41,7 +42,7 @@ export class EmoticonsComponent implements OnInit {
     }
 
     loadPopularEmoticons() {
-        this.emoticonList = this.emoticonsService.getPopularEmoticons();
+        this.emoticonsService.loadPopularEmoticons();
     }
 
     onEmoticonClick($event, emoticon) {

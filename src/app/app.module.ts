@@ -14,10 +14,17 @@ import {FirebaseConfigObj} from "../environments/firebase";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireDatabase, AngularFireDatabaseModule} from "angularfire2/database";
 
-import {MatButtonModule, MatInputModule, MatSnackBarModule, MatToolbarModule} from "@angular/material";
+import {
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatToolbarModule
+} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EmoticonsService} from "./service/emoticons.service";
 import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -38,6 +45,8 @@ import {HttpClientModule} from "@angular/common/http";
         MatSnackBarModule,
         MatInputModule,
         HttpClientModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
         AngularFireModule.initializeApp(FirebaseConfigObj, 'Emotify')
     ],
     providers: [

@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {EmoticonsService} from "../../service/emoticons.service";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {Tag} from "../../models/Tag";
 
 
 @Component({
@@ -18,7 +22,14 @@ import {Component, OnInit} from '@angular/core';
                 <div class="container">
                     <div class="row">
                         <div class="col l8 offset-l2 m10 offset-m1 s12">
-                            <input matInput id="search-input" class="z-depth-4" type="search" placeholder="Search">
+                            <input matInput id="search-input" #searchBox class="z-depth-4" type="search"
+                                   placeholder="Search"
+                                   [matAutocomplete]="auto" (keyup)="setQuery(searchBox.value)"
+                                   (keyup.enter)="onEnter(searchBox.value)">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let tag of filteredTags | async"
+                                            [value]="tag.key">{{tag.key}}</mat-option>
+                            </mat-autocomplete>
                         </div>
                     </div>
                 </div>
@@ -61,10 +72,35 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-    constructor() {
+    private _allTags: Observable<Array<Tag>>;
+    private filteredTags: Observable<Array<Tag>>;
+    private previousQuery: string = "";
+    private currentQuery: string = "";
+
+    constructor(private emoticonsService: EmoticonsService) {
     }
 
     ngOnInit() {
+        this._allTags = this.emoticonsService.getTags();
+        this.filteredTags = this._allTags
     }
 
+    setQuery(query) {
+        this.currentQuery = query;
+        if (this.previousQuery == this.currentQuery) {
+            return
+        }
+        this.previousQuery = this.currentQuery;
+        this.filteredTags = this._allTags.pipe(
+            map(tags => {
+                return tags.filter((tag) => {
+                    return tag.key.includes(this.currentQuery)
+                })
+            })
+        );
+    }
+
+    onEnter(tag) {
+        this.emoticonsService.setActiveTag(tag);
+    }
 }
