@@ -8,19 +8,44 @@ jobs:
       - restore_cache:
           key: EmotifyCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
-      - save_cache:
-          key: EmotifyCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-          paths:
-            - "node_modules"
       - run:
           name: Install dependencies
           command: 'npm install'
       - run:
+          name: Add Firebase Config
+          command: echo $FIREBASE_TS > src/environments/firebase.ts
+      - run:
           name: Build
           command: npm run ng build
+      - save_cache:
+          key: EmotifyCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - dist
+            - package.json
+            - firebase.json
+            - .firebaserc
+
+  deploy-firebase:
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: EmotifyCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: 'npm install'
+      - run:
+          name: Deploy Master to Firebase
+          command: npm run firebase deploy --token FIREBASE_DEPLY_TOKEN
+
 
 workflows:
   version: 2
   build_source:
     jobs:
       - build
+      - deploy:
+          requires:
+            - build
