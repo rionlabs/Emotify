@@ -73,9 +73,10 @@ import {Tag} from "../../models/Tag";
 export class NavBarComponent implements OnInit {
 
     private _allTags: Observable<Array<Tag>>;
-    private filteredTags: Observable<Array<Tag>>;
     private previousQuery: string = "";
     private currentQuery: string = "";
+
+    filteredTags: Observable<Array<Tag>>;
 
     constructor(private emoticonsService: EmoticonsService) {
     }
