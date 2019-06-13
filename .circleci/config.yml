@@ -38,7 +38,7 @@ jobs:
           command: npm install --save-dev firebase-tools
       - run:
           name: Deploy Master to Firebase
-          command: npm run firebase deploy --token FIREBASE_DEPLY_TOKEN --non-interactive
+          command: npm run firebase deploy --only hosting --token FIREBASE_DEPLY_TOKEN --non-interactive
 
 
 workflows:
