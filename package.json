@@ -39,6 +39,7 @@
     "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "^7.2.15",
     "@types/jquery": "^3.3.29",
+    "firebase-tools": "^7.0.0",
     "typescript": "~3.2.4"
   }
 }
