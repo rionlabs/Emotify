@@ -95,5 +95,5 @@ jspm_packages/
 .sass-cache/
 
 ## Firebase
-/.firebaserc
+/.firebase/*
 *debug.log

@@ -38,7 +38,7 @@ jobs:
           command: npm install
       - run:
           name: Deploy Master to Firebase
-          command: npm run firebase deploy --token=FIREBASE_DEPLY_TOKEN
+          command: npm run firebase deploy --token=$FIREBASE_DEPLY_TOKEN
 
 
 workflows:
