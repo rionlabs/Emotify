@@ -1,25 +1,25 @@
 <!-- Emoticons Section -->
 <div class="section">
     <div class="section center-align">
-        <div *ngFor="let e of emoticonList | async" class="big-chip"
-             (click)="onEmoticonClick($event, e)">{{e.emoticon}}</div>
+        <div (click)="onEmoticonClick($event, e)" *ngFor="let e of emoticonList | async"
+             class="big-chip">{{e.emoticon}}</div>
     </div>
 </div>
 
 <!-- Tags Section -->
 <div class="section center-align">
-    <h5 id="all-emoticons-title" class="center">all emoticons</h5>
+    <h5 class="center" id="all-emoticons-title">all emoticons</h5>
     <div class="row">
         <div class="section center-align" id="tag-container">
-            <div class="chip" (click)="loadPopularEmoticons()">
+            <div (click)="loadPopularEmoticons()" class="chip">
                 Popular
             </div>
-            <div *ngFor="let item of items | async" class="chip"
-                 (click)="loadTaggedEmoticon(item)">{{item.key | titlecase}}</div>
+            <div (click)="loadTaggedEmoticon(item)" *ngFor="let item of items | async"
+                 class="chip">{{item.key | titlecase}}</div>
         </div>
     </div>
 </div>
 
 <!-- Necessary for copy function -->
-<label for="clipboard-area" hidden></label>
-<textarea id="clipboard-area" hidden></textarea>
+<!--suppress HtmlFormInputWithoutLabel -->
+<textarea id="clipboard-area"></textarea>
