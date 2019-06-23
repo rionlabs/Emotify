@@ -47,6 +47,10 @@ import {Tag} from "../../models/Tag";
             font-size: 2.5rem;
         }
 
+        .row {
+            margin-bottom: 0;
+        }
+
         #search-input {
             background-color: #FFF;
             border-width: 0;
