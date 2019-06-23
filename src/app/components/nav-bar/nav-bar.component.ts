@@ -91,7 +91,7 @@ export class NavBarComponent implements OnInit {
     }
 
     setQuery(query) {
-        this.currentQuery = query;
+        this.currentQuery = query.toLowerCase();
         if (this.previousQuery == this.currentQuery) {
             return
         }
