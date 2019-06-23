@@ -27,7 +27,7 @@ import {Component, OnInit} from '@angular/core';
             <br>
             <br>
             <div class="row">
-                Having Issues? Send us email at <a href="mailto:mail@emotify.io">mail@emotify.io</a>!
+                Having Issues? Send us email at <a href="mailto:mail@rionlabs.org">mail@rionlabs.org</a>!
             </div>
             <br>
             <br>
