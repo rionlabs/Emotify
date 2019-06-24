@@ -15,15 +15,22 @@ import {Component, OnInit} from '@angular/core';
                             communicating and was a huge thing when the internet first came out. Emoticons are also
                             known as Kaomoji (顔文字), of course of Japanese origin.
                         </p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSffwwOJmZdeSvbgL6G1XhIMjKcqLZZS-BcqO0Z4dPU8oJBKzw/viewform?usp=sf_link"
+                           target="_blank"
+                           class="waves-effect waves-light btn deep-orange-text rounded">Give us Feedback</a>
+
                     </div>
 
                     <div class="col l6 m6 s12 center-align">
                         <h5 class="white-text">We are open sourced!</h5>
                         <p class="white-text">
-                            Emotify is free, and open-sourced Angular app maintained by rionlabs. The code is available
-                            on GitHub! Feel free to create PRs for new features, or create issues to let us know we
-                            broke something! If you are not interested in the code, you can give us your feedback at <a
-                                href="mailto:mail@rionlabs.org" class="white-text">mail@rionlabs.org</a>.
+                            Emotify is free, and open-sourced app maintained by rionlabs. The code is available
+                            on GitHub! This is an Angular App with Firebase as it's backend, and hosted on Firebase
+                            itself. If you are interested in programming, feel free to create PRs for new features, or
+                            create issues to let us know we
+                            broke something! You can also contact us for anything else at <a id="support-mail"
+                                                                                             href="mailto:mail@rionlabs.org"
+                                                                                             class="white-text">mail@rionlabs.org</a>.
                         </p>
                         <a href="https://github.com/rionlabs/Emotify" target="_blank"
                            class="waves-effect waves-light btn deep-orange-text rounded">View
@@ -45,6 +52,10 @@ import {Component, OnInit} from '@angular/core';
                 border-radius: 16px;
                 background-color: #fff;
                 text-transform: none;
+            }
+
+            #support-mail {
+                text-decoration: underline;
             }
 
             #rionlabs-logo {
