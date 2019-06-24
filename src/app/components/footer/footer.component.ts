@@ -40,7 +40,7 @@ import {Component, OnInit} from '@angular/core';
             </div>
             <div class="footer-copyright">
                 <div class="container center-align">
-                    <a href="https://github.com/rionlabs" target="_blank" id="rionlabs-logo"
+                    <a href="https://rionlabs.org" target="_blank" id="rionlabs-logo"
                        class="white-text">rionlabs</a>
                 </div>
             </div>
