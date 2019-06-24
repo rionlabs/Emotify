@@ -3,7 +3,7 @@
   "homepage": "https://emotify.io",
   "repository": "https://github.com/rionlabs/Emotify.git",
   "bugs": "https://github.com/rionlabs/Emotify/issues",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
